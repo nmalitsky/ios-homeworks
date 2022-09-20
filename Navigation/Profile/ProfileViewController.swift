@@ -17,13 +17,6 @@ class ProfileViewController: UIViewController {
         view.addSubview(headerView)
     }
     
-    private func rowSize(forView view: UIView) -> CGSize {
-        return view.systemLayoutSizeFitting(
-            CGSize(width: view.bounds.width,
-                   height: UIView.layoutFittingCompressedSize.height)
-        )
-    }
-    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         headerView.frame = view.frame
