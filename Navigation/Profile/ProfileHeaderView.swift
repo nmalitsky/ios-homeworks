@@ -86,7 +86,7 @@ class ProfileHeaderView: UIView {
             self.button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.button.heightAnchor.constraint(equalToConstant: 50),
-            self.button.topAnchor.constraint(equalTo: self.avatar.bottomAnchor, constant: 16 + 40 + 10)
+            self.button.topAnchor.constraint(equalTo: self.avatar.bottomAnchor, constant: 16 + 40 + 16)
         ])
     }
     
@@ -107,7 +107,7 @@ class ProfileHeaderView: UIView {
         self.addSubview(self.statusLabel)
         
         NSLayoutConstraint.activate([
-            self.statusLabel.bottomAnchor.constraint(equalTo: self.button.topAnchor, constant: -(34 + 40 + 10)),
+            self.statusLabel.bottomAnchor.constraint(equalTo: self.button.topAnchor, constant: -(34 + 40 + 16)),
             self.statusLabel.leadingAnchor.constraint(equalTo: self.avatar.trailingAnchor, constant: 16)
         ])
     }
@@ -124,8 +124,11 @@ class ProfileHeaderView: UIView {
         textField.backgroundColor = UIColor.white
         textField.font = UIFont(name:"HelveticaNeue", size: 15.0)
         textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing;
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        textField.layer.cornerRadius = 12.0
+        textField.layer.masksToBounds = true
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderWidth = 1.0
         textField.addTarget(self, action: #selector(textFieldAction(_:)), for: .editingChanged)
         return textField
         
@@ -137,7 +140,8 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate([
             self.inputTextField.bottomAnchor.constraint(equalTo: self.button.topAnchor, constant: -34),
             self.inputTextField.leadingAnchor.constraint(equalTo: self.avatar.trailingAnchor, constant: 16),
-            self.inputTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+            self.inputTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            self.inputTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -153,7 +157,6 @@ class ProfileHeaderView: UIView {
         addButton()
         addStatus()
         addInput()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
